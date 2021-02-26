@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300, "fill": "#19500C"}, "axis": {"labelColor": "white", "labelFontSize": 20, "titleColor": "white", "titleFontSize": 30}, "background": "#196F0C", "scale": {"maxSize": 6000}, "title": {"anchor": "start", "color": "white", "fontSize": 30, "subtitleColor": "white", "subtitleFontSize": 15}}, "layer": [{"mark": "circle", "encoding": {"color": {"type": "quantitative", "field": "accuracy", "legend": {"title": "Accuracy"}, "scale": {"scheme": "lightgreyred"}}, "size": {"type": "quantitative", "field": "passes", "legend": null}, "tooltip": {"type": "nominal", "field": "text"}, "x": {"type": "quantitative", "axis": {"values": [-20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65]}, "field": "air_yards_rounded", "scale": {"domain": [-20, 70]}, "title": "Air Yards from Line of Scrimmage"}, "y": {"type": "nominal", "field": "location", "title": null}}, "selection": {"selector064": {"type": "single", "fields": ["team"], "bind": {"input": "select", "options": ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LA", "LAC", "LV", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB", "TEN", "WAS"], "name": "Team: "}, "init": {"team": "NE"}}}}, {"mark": {"type": "text", "align": "center", "baseline": "middle", "color": "black", "fontSize": 10}, "encoding": {"text": {"type": "nominal", "field": "text"}, "x": {"type": "quantitative", "field": "air_yards_rounded"}, "y": {"type": "nominal", "field": "location"}}}], "data": {"url": "https://raw.githubusercontent.com/javendano585/NFL_Data/main/season_2020.json"}, "height": 500, "title": {"text": "Pass success for 2020 Season"}, "transform": [{"filter": {"selection": "selector064"}}], "width": 1000, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
