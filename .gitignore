@@ -1,3 +1,8 @@
+# Data from https://overthecap.com/positional-spending/
+Salary_Cap/nfl_df.parquet
+# Logos from https://raw.githubusercontent.com/statsbylopez/BlogPosts/master/nfl_teamlogos.csv
+Salary_Cap/Logos/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
