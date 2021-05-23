@@ -1,5 +1,5 @@
 # Data from https://overthecap.com/positional-spending/
-Salary_Cap/nfl_df.parquet
+Salary_Cap/*.parquet
 # Logos from https://raw.githubusercontent.com/statsbylopez/BlogPosts/master/nfl_teamlogos.csv
 Salary_Cap/Logos/
 
